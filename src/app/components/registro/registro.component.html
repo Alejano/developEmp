@@ -1,0 +1,161 @@
+<div>
+<div class="card-deck">
+  <div class="card">
+
+  <div class="card-header">
+    <h5 class="card-title">Registrate</h5>
+    <button class="btn btn-primary btn-block" (click)="mostrar = !mostrar" >Registrate</button>
+  </div>
+  <div *ngIf="!mostrar">
+    <ul  class="list-group list-group-flush ">
+
+      <form (ngSubmit)="guardar()" >
+
+      <li class="list-group-item">
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="validationDefault01">Nombre</label>
+            <input [(ngModel)]="usuario.nombre" name="nombre"
+             type="text" class="form-control" id="validationDefault01" placeholder="First name"  >
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationDefault02">Apellido Paterno</label>
+            <input [(ngModel)]="usuario.apellidoP" name="apellidoP"
+            type="text" class="form-control" id="validationDefault02" placeholder="Last name"  >
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationDefault03">Apellido Materno</label>
+            <input [(ngModel)]="usuario.apellidoM" name="apellidoM"
+             type="text" class="form-control" id="validationDefault03" placeholder="Last name"  >
+          </div>
+          </div>
+      </li>
+      <li class="list-group-item">
+          <div class="form-row">
+          <div class="col-md-6 mb-3">
+
+            <label for="Fechana">Fecha de nacimiento</label>
+            <input [(ngModel)]="usuario.fechan" name="fechan"
+             type="date" class="form-control" id="Fechana"  >
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="inputsex">Sexo</label>
+            <select [(ngModel)]="usuario.sexo" name="sexo"
+             id="inputsex" class="form-control">
+              <option selected>Mujer</option>
+              <option >Hombre</option>
+            </select>
+          </div>
+        </div>
+      </li>
+
+      <li class="list-group-item">
+          <div class="form-row">
+          <div class="col-md-6 mb-3">
+            <label for="inputEmail4">Email</label>
+            <input [(ngModel)]="usuario.email" name="email"
+             type="email" class="form-control" id="inputEmail4" placeholder="Email" >
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label for="inputPassword4">Password</label>
+            <input [(ngModel)]="usuario.passwd" name="passwd"
+             type="password" class="form-control" id="inputPassword4" placeholder="Password" >
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label for="inputPassword4">Telefono</label>
+            <input [(ngModel)]="usuario.tel" name="tel"
+             type="tel" class="form-control" id="inputtel" pattern="[0-10]{10}" placeholder="(lada) N° Telefono" >
+          </div>
+        </div>
+      </li>
+
+      <li class="list-group-item">
+          <div class="form-row">
+
+          <div class="col-md-4 mb-3">
+            <label for="City">Ciudad</label>
+            <input [(ngModel)]="usuario.city" name="city"
+             type="text" class="form-control" id="City" placeholder="M ó C" >
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="inputState">Estado</label>
+            <select [(ngModel)]="usuario.estado" name="estado"
+             id="inputState" class="form-control">
+              <option selected>CDMX</option>
+              <option>Estado de Mexico</option>
+            </select>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="form-group">
+              <label for="inputAddress" >Calle</label>
+              <input [(ngModel)]="usuario.calle" name="calle"
+               type="text" class="form-control" id="inputAddress" placeholder="Calle" >
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="form-group">
+              <label for="inputAddressN">Numero</label>
+              <input [(ngModel)]="usuario.numero" name="numero"
+               type="number" class="form-control" id="inputAddressN" placeholder="N°" >
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="form-group">
+              <label for="inputAddressC">Colonia</label>
+              <input [(ngModel)]="usuario.colonia" name="colonia"
+               type="text" class="form-control" id="inputAddressC" placeholder="Colonia" >
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="form-group">
+              <label for="inputAddressCP">Codigo Postal</label>
+              <input [(ngModel)]="usuario.cp" name="cp"
+               type="text" class="form-control" id="inputAddressCP" placeholder="CP" pattern="[5]{5}" >
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item" >
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" >
+            <label class="form-check-label" for="invalidCheck2">
+              Acepto los terminos y condiciones de uso
+            </label>
+          </div>
+        </div>
+        <button
+         class="btn btn-outline-primary btn-block" type="submit">Registrarse</button>
+      </li>
+
+      </form>
+
+
+    </ul>
+  </div>
+
+    <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Registrate con tus redes!!!</h5>
+
+      <div class="boton">
+        <span class="log">
+        <button (click)="login()" *ngIf="!auth.isAuthenticated()"
+        type="button" name="button" class="btn btn-outline-primary btn-block">Iniciar Sesion</button>
+        </span>
+      </div>
+
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Registrate!!</small>
+    </div>
+  </div>
+  </div>
+</div>

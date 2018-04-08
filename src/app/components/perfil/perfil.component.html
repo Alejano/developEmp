@@ -1,19 +1,216 @@
-<div class="row" *ngIf="profile">
 
-  <div class="col-md-4">
-      <img [src]="profile.picture" class="img-fluid">
-  </div>
-  <div class="col-md-8">
+<div class="card-deck">
 
-      <ul class="list-group">
-        <li class="list-group-item">{{ profile.name }}</li>
-        <li class="list-group-item">{{ profile.gender }}</li>
-        <li class="list-group-item">{{ profile.updated_at | date: 'dd MM yyyy' }}</li>
+    <div class="card">
+      <div class="card-header">
+
+        <div class="row" *ngIf="profile">
+          <div class="col-md-8">
+            <img [src]="profile.picture" class="img-fluid">
+          </div>
+        </div>
+
+      </div>
+
+      <div class="card-body">
+        <!--<h5 class="card-title">C:</h5>-->
+
+          <div class="card" *ngIf="!Dalta">
+          <h3 class="card-title 2">
+            Esnecesario que ingreses tus datos para poder encontrar el mejor servicio para ti
+          </h3>
+          </div>
+          <div class="card" *ngIf="!Dalta">
+          <h3 class="card-title 2">
+            Recuerda que tus datos estan protegidos!
+          </h3>
+          </div>
+<!--
+      <div class="col-md-8">
+        Nickname:  {{profile.name}}
+        <br>
+        id_P: {{profile.sub}}
+      </div>
+-->
+      </div>
+      <div class="card-footer" >
+        <small class="text-muted">Registrate!!</small>
+      </div>
+    </div>
+
+    <div class="card" *ngIf="Dalta">
+      <div class="card-header">
+        <h5 class="card-title">Perfil</h5>
+      </div>
+      <div class="card-body">
+        <ul  class="list-group list-group-flush ">
+
+          <form (ngSubmit)="guardar(usuario.ID_U=profile.sub)" >
+
+          <li class="list-group-item">
+            <div class="form-row">
+              <div class="col-sm-10">
+                <label for="nombre">Nombre:  </label>
+                <input [(ngModel)]="usuario.nombre" name="nombre"
+                type="text" class="form-control" id="nombre" placeholder="Nombre"  >
+              </div>
+              <div class="col-sm-10">
+                <label for="AP">Apellido Paterno:</label>
+                <input [(ngModel)]="usuario.apellidoP" name="apellidoP"
+                type="text" class="form-control" id="AP" placeholder="Last name"  >
+              </div>
+              <div class="col-sm-10">
+                <label for="AM">Apellido Materno:</label>
+                <input [(ngModel)]="usuario.apellidoM" name="apellidoM"
+                 type="text" class="form-control" id="AM" placeholder="Last name"  >
+              </div>
+              </div>
+          </li>
+            </form>
+        </ul>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Registrate!!</small>
+      </div>
+    </div>
+
+
+    <div class="card" *ngIf="!Dalta">
+
+    <div class="card-header">
+      <h5 class="card-title">Registrate</h5>
+
+    </div>
+    <div >
+      <ul  class="list-group list-group-flush ">
+
+        <form (ngSubmit)="guardar(usuario.ID_U=profile.sub)" >
+
+        <li class="list-group-item">
+          <div class="form-row">
+            <div class="col-md-4 mb-3">
+              <label for="validationDefault01">Nombre</label>
+              <input [(ngModel)]="usuario.nombre" name="nombre"
+               type="text" class="form-control" id="validationDefault01" placeholder="First name"  >
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="validationDefault02">Apellido Paterno</label>
+              <input [(ngModel)]="usuario.apellidoP" name="apellidoP"
+              type="text" class="form-control" id="validationDefault02" placeholder="Last name"  >
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="validationDefault03">Apellido Materno</label>
+              <input [(ngModel)]="usuario.apellidoM" name="apellidoM"
+               type="text" class="form-control" id="validationDefault03" placeholder="Last name"  >
+            </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="form-row">
+            <div class="col-md-6 mb-3">
+
+              <label for="Fechana">Fecha de nacimiento</label>
+              <input [(ngModel)]="usuario.fechaN" name="fechaN"
+               type="date" class="form-control" id="Fechana"  >
+            </div>
+            <div class="col-md-3 mb-3">
+              <label for="inputsex">Sexo</label>
+              <select [(ngModel)]="usuario.sexo" name="sexo"
+               id="inputsex" class="form-control">
+                <option selected>Mujer</option>
+                <option >Hombre</option>
+              </select>
+            </div>
+          </div>
+        </li>
+
+        <li class="list-group-item">
+          <div class="form-row">
+            <div class="col-md-6 mb-3">
+              <label for="inputPassword4">Telefono</label>
+              <input [(ngModel)]="usuario.tel" name="tel"
+               type="tel" class="form-control" id="inputtel" pattern="[0-10]{10}" placeholder="(lada) N° Telefono" >
+            </div>
+          </div>
+        </li>
+
+        <li class="list-group-item">
+            <div class="form-row">
+
+            <div class="col-md-4 mb-3">
+              <label for="City">Ciudad</label>
+              <input [(ngModel)]="usuario.city" name="city"
+               type="text" class="form-control" id="City" placeholder="M ó C" >
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="inputState">Estado</label>
+              <select [(ngModel)]="usuario.estado" name="estado"
+               id="inputState" class="form-control">
+                <option selected>CDMX</option>
+                <option>Estado de Mexico</option>
+              </select>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="form-group">
+                <label for="inputAddress" >Calle</label>
+                <input [(ngModel)]="usuario.calle" name="calle"
+                 type="text" class="form-control" id="inputAddress" placeholder="Calle" >
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="form-group">
+                <label for="inputAddressN">Numero</label>
+                <input [(ngModel)]="usuario.numero" name="numero"
+                 type="number" class="form-control" id="inputAddressN" placeholder="N°" >
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="form-group">
+                <label for="inputAddressC">Colonia</label>
+                <input [(ngModel)]="usuario.colonia" name="colonia"
+                 type="text" class="form-control" id="inputAddressC" placeholder="Colonia" >
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="form-group">
+                <label for="inputAddressCP">Codigo Postal</label>
+                <input [(ngModel)]="usuario.cp" name="cp"
+                 type="text" class="form-control" id="inputAddressCP" placeholder="CP" pattern="[5]{5}" >
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item" >
+          <div class="form-group">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" >
+              <label class="form-check-label" for="invalidCheck2">
+                Acepto los terminos y condiciones de uso
+              </label>
+            </div>
+          </div>
+          <button
+           class="btn btn-outline-primary btn-block" type="submit">Registrarse</button>
+        </li>
+
+        </form>
+
+
       </ul>
+    </div>
 
-  </div>
+      <div class="card-footer">
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </div>
+    </div>
 
-</div>
+
+    </div>
+
+
+
+
+
 <!--
 <pre>
 {{profile|json}}

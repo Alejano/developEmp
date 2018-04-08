@@ -10,13 +10,35 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" *ngIf="!auth.isAuthenticated()"
-           [routerLink]="['inicio']" routerLinkActive="active">Inicio</a>
+           [routerLink]="['inicio']" routerLinkActive="active">Conocenos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" *ngIf="auth.isAuthenticated()"
           [routerLink]="['perfil']" routerLinkActive="active">Perfil</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="auth.isAuthenticated()"
+          [routerLink]="['#']" routerLinkActive="active">Trabajadores</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="auth.isAuthenticated()"
+          [routerLink]="['#']" routerLinkActive="active">Tus favoritos</a>
+        </li>
       </ul>
+
+      <span class="navbar-text">
+        <button (click)="login()" *ngIf="!auth.isAuthenticated()" 
+        type="button" name="button" class="btn btn-outline-primary btn-sm">Iniciar Sesion</button>
+
+        <button (click)="logout()" *ngIf="auth.isAuthenticated()"
+        type="button" name="button" class="btn btn-outline-primary btn-sm">Cerrar Sesion</button>
+      </span>
+
+      <!--
+      <button  *ngIf="!auth.isAuthenticated()"
+      type="button" name="button" class="btn btn-outline-primary btn-sm"
+      [routerLink]="['registro']" routerLinkActive="active">Iniciar Sesion</button>
+
       <span class="navbar-text">
         <button (click)="login()" *ngIf="!auth.isAuthenticated()"
         type="button" name="button" class="btn btn-outline-primary btn-sm">Iniciar Sesion</button>
@@ -24,5 +46,7 @@
         <button (click)="logout()" *ngIf="auth.isAuthenticated()"
         type="button" name="button" class="btn btn-outline-primary btn-sm">Cerrar Sesion</button>
       </span>
+
+    -->
     </div>
 </nav>
